@@ -24,4 +24,4 @@ function invokeAction({ action, id, name, email, phone }) {
     }
   }
 
-logger.removeContact(3);
+  invokeAction(argv);
