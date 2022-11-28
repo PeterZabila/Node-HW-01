@@ -2,7 +2,6 @@ const fs = require("fs").promises;
 const path = require('path');
 
 const contactsPath = path.resolve('db/contacts.json');
-console.log(contactsPath);
 
 
 function listContacts() {
@@ -38,7 +37,7 @@ function listContacts() {
     .then((result) =>
       result !== null
         ? fs
-            .writeFile(testPath, JSON.stringify(result))
+            .writeFile(contactsPath, JSON.stringify(result))
             .then(() => console.log(`Contact ${contactId} removed`))
             .catch((err) => console.log(err.message))
         : console.log("Contact not found")
@@ -47,7 +46,7 @@ function listContacts() {
   }
   
   function addContact(name, email, phone) {
-    s.readFile(contactsPath)
+    fs.readFile(contactsPath)
     .then((data) => {
       const contactsList = JSON.parse(data);
       if (
@@ -75,6 +74,3 @@ module.exports = {
     removeContact,
     addContact
 };
-
-getContactById("3");
-// listContacts();

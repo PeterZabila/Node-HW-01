@@ -1,9 +1,27 @@
-console.log("Hello");
-
+const argv = require("yargs").argv;
 const logger = require('./contacts');
 
-logger.listContacts();
-logger.getContactById(3);
-logger.removeContact(2);
-logger.addContact("Allen Raymond",
-"nulla.ante@vestibul.co.uk", "(992) 914-3792")
+function invokeAction({ action, id, name, email, phone }) {
+    switch (action) {
+      case "list":
+        logger.listContacts();
+        break;
+  
+      case "get":
+        logger.getContactById(id);
+        break;
+  
+      case "add":
+        logger.addContact(name, email, phone)
+        break;
+  
+      case "remove":
+        logger.removeContact(id)
+        break;
+  
+      default:
+        console.warn("\x1B[31m Unknown action type!");
+    }
+  }
+
+logger.removeContact(3);
