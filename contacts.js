@@ -37,7 +37,7 @@ function listContacts() {
     .then((result) =>
       result !== null
         ? fs
-            .writeFile(contactsPath, JSON.stringify(result))
+            .writeFile(contactsPath, JSON.stringify(result, null, 2))
             .then(() => console.log(`Contact ${contactId} removed`))
             .catch((err) => console.log(err.message))
         : console.log("Contact not found")
@@ -59,7 +59,7 @@ function listContacts() {
       }
 
       contactsList.push({ name, email, phone });
-      fs.writeFile(contactsPath, JSON.stringify(contactsList)).then(
+      fs.writeFile(contactsPath, JSON.stringify(contactsList, null, 2)).then(
         console.log(`${name} is added to contacts`)
       );
       return;
