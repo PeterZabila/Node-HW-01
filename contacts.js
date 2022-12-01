@@ -34,7 +34,7 @@ const addContact = async (name, email, phone) => {
   const contactId = nanoid();
 
   if (contacts.find(contact => contact.email.toLowerCase() === email.toLowerCase())) {
-      console.log(`${name} is already in the contact list`);
+      console.log(`User with email address ${email} is already in the contact list`);
       return;
   }
   contacts.push({name, email, phone, id: contactId});
